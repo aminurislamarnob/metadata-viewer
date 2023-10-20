@@ -11,8 +11,6 @@ class Assets {
 
         if ( is_admin() ) {
             add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_admin_scripts' ], 10 );
-        } else {
-            add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_front_scripts' ] );
         }
     }
 
@@ -34,11 +32,8 @@ class Assets {
      * @return void
      */
     public function register_scripts() {
-        $admin_script       = METADATA_VIEWER_PLUGIN_ASSET . '/admin/script.js';
-        $frontend_script    = METADATA_VIEWER_PLUGIN_ASSET . '/frontend/script.js';
-
-        wp_register_script( 'metadata_viewer_admin_script', $admin_script, [], filemtime( METADATA_VIEWER_DIR . '/assets/admin/script.js' ), true );
-        wp_register_script( 'metadata_viewer_script', $frontend_script, [], filemtime( METADATA_VIEWER_DIR . '/assets/frontend/script.js' ), true );
+        wp_register_script( 'metadata_viewer_admin_script', METADATA_VIEWER_PLUGIN_ASSET . '/admin/js/script.js', [], METADATA_VIEWER_PLUGIN_VERSION, true );
+        wp_register_script( 'metadata_viewer_highlight_script', METADATA_VIEWER_PLUGIN_ASSET . '/admin/js/highlight.min.js', [], METADATA_VIEWER_PLUGIN_VERSION, true );
     }
 
     /**
@@ -47,11 +42,7 @@ class Assets {
      * @return void
      */
     public function register_styles() {
-        $admin_style       = METADATA_VIEWER_PLUGIN_ASSET . '/admin/style.css';
-        $frontend_style    = METADATA_VIEWER_PLUGIN_ASSET . '/frontend/style.css';
-
-        wp_register_style( 'metadata_viewer_admin_style', $admin_style, [], filemtime( METADATA_VIEWER_DIR . '/assets/admin/style.css' ) );
-        wp_register_style( 'metadata_viewer_style', $frontend_style, [], filemtime( METADATA_VIEWER_DIR . '/assets/frontend/style.css' ) );
+        wp_register_style( 'metadata_viewer_admin_style', METADATA_VIEWER_PLUGIN_ASSET . '/admin/css/style.css', [], METADATA_VIEWER_PLUGIN_VERSION );
     }
 
     /**
@@ -60,21 +51,14 @@ class Assets {
      * @return void
      */
     public function enqueue_admin_scripts() {
-        wp_enqueue_script( 'metadata_viewer_admin_script' );
-        wp_localize_script(
-            'metadata_viewer_admin_script', 'Metadata_Viewer_Admin', []
-        );
-    }
+        //highlight css/js
+        wp_enqueue_script( 'metadata_viewer_highlight_script' );
 
-    /**
-     * Enqueue front-end scripts.
-     *
-     * @return void
-     */
-    public function enqueue_front_scripts() {
-        wp_enqueue_script( 'metadata_viewer_script' );
-        wp_localize_script(
-            'metadata_viewer_script', 'Metadata_Viewer', []
-        );
+        //plugin css/js
+        wp_enqueue_style( 'metadata_viewer_admin_style' );
+        wp_enqueue_script( 'metadata_viewer_admin_script' );
+        // wp_localize_script(
+        //     'metadata_viewer_admin_script', 'Metadata_Viewer_Admin', []
+        // );
     }
 }

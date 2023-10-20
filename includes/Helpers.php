@@ -21,7 +21,7 @@ class Helpers {
      * @return void
      */
     public static function get_metadata_table_view( $post_meta ) {
-        require_once METADATA_VIEWER_TEMPLATE_DIR . '/metadata-viwer-table.php';
+        require_once METADATA_VIEWER_TEMPLATE_DIR . '/metadata-viewer-table.php';
     }
 
     /**

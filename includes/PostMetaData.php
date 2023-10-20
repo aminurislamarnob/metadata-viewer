@@ -25,7 +25,7 @@ class PostMetaData {
     public function adding_metadata_viewer_meta_box( $post_type, $post ) {
         add_meta_box(
             'post-metadata-viewer',
-            __( 'Post Metadata', 'metadata-viewer' ),
+            __( 'Post Metadata Viewer', 'metadata-viewer' ),
             [ $this, 'render_show_post_metadata' ],
             $post_type,
             'normal',

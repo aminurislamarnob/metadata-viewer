@@ -178,6 +178,7 @@ final class MetadataViewer {
         $this->container['scripts'] = new Assets();
         $this->container['helpers'] = new Helpers();
         $this->container['post_meta_data'] = new PostMetaData();
+        $this->container['user_meta_data'] = new UserMetaData();
     }
 
     /**
