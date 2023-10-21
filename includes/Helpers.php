@@ -25,24 +25,14 @@ class Helpers {
     }
 
     /**
-     * Unserialize Metadata array
-     *
-     * @param array $meta_value
-     * @return void
-     */
-    public static function unserialize_metadata( array $meta_value ) {
-        return self::recursive_metadata_array( $meta_value );
-    }
-
-    /**
      * Recursive function to unserialize metadata array
      *
      * @param array $meta_value
      * @return void
      */
-    public static function recursive_metadata_array( array $meta_value ) {
+    public static function unserialize_metadata_recursive( array $meta_value ) {
         foreach ( $meta_value as $key => $value ) {
-            $meta_value[ $key ] = is_array( $value ) ? self::recursive_metadata_array( $value ) : maybe_unserialize( $value );
+            $meta_value[ $key ] = is_array( $value ) ? self::unserialize_metadata_recursive( $value ) : maybe_unserialize( $value );
         }
         return $meta_value;
     }

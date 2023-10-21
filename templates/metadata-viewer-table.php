@@ -9,7 +9,7 @@
     <tbody>
         <?php
         foreach ( $post_meta as $key => $value ) {
-            $unserialized_metadata = WeLabs\MetadataViewer\Helpers::unserialize_metadata( $value );
+            $unserialized_metadata = WeLabs\MetadataViewer\Helpers::unserialize_metadata_recursive( $value );
 			?>
         <tr>
             <td><pre><?php echo esc_html( $key ); ?></pre></td>

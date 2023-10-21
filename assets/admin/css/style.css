@@ -27,7 +27,7 @@
     padding: 10px;
 }
 
-#post-metadata-viewer .inside {
+#post-metadata-viewer .inside, #user-metadata-viewer-id .inside {
     padding-left: 0;
     padding-right: 0;
     margin-top: 0;
@@ -40,13 +40,19 @@
 .metadata-viewer-table tr:hover td {
     background: #fafafa;
 }
-#post-metadata-viewer {
+#post-metadata-viewer, #user-metadata-viewer-id{
   border: 0px;
   box-shadow: none;
 }
 
-#post-metadata-viewer .postbox-header {
+#post-metadata-viewer .postbox-header, #user-metadata-viewer-id .postbox-header {
   border-bottom-color: #e2e4e7;
+}
+#post-metadata-viewer h2, #user-metadata-viewer-id h2 {
+  font-size: 14px;
+  padding: 8px 12px;
+  margin: 0;
+  line-height: 1.4;
 }
 
 /*

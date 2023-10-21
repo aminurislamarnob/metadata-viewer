@@ -1986,12 +1986,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/var-dumper.git",
-                "reference": "87e0d100b3db4f0972f4bf6f60b6c6b36d0446eb"
+                "reference": "86901b12011e790bdc7bc8fb934f2ca8e22981ef"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/87e0d100b3db4f0972f4bf6f60b6c6b36d0446eb",
-                "reference": "87e0d100b3db4f0972f4bf6f60b6c6b36d0446eb",
+                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/86901b12011e790bdc7bc8fb934f2ca8e22981ef",
+                "reference": "86901b12011e790bdc7bc8fb934f2ca8e22981ef",
                 "shasum": ""
             },
             "require": {
@@ -2063,7 +2063,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-10-17T13:49:44+00:00"
+            "time": "2023-10-18T09:43:34+00:00"
         },
         {
             "name": "tareq1988/wp-php-cs-fixer",
@@ -2341,5 +2341,5 @@
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": [],
-    "plugin-api-version": "2.6.0"
+    "plugin-api-version": "2.3.0"
 }

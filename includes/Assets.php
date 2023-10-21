@@ -32,7 +32,7 @@ class Assets {
      * @return void
      */
     public function register_scripts() {
-        wp_register_script( 'metadata_viewer_admin_script', METADATA_VIEWER_PLUGIN_ASSET . '/admin/js/script.js', [], METADATA_VIEWER_PLUGIN_VERSION, true );
+        wp_register_script( 'metadata_viewer_admin_script', METADATA_VIEWER_PLUGIN_ASSET . '/admin/js/script.js', [ 'jquery' ], METADATA_VIEWER_PLUGIN_VERSION, true );
         wp_register_script( 'metadata_viewer_highlight_script', METADATA_VIEWER_PLUGIN_ASSET . '/admin/js/highlight.min.js', [], METADATA_VIEWER_PLUGIN_VERSION, true );
     }
 
