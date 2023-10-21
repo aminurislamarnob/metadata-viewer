@@ -54,6 +54,44 @@
   margin: 0;
   line-height: 1.4;
 }
+.metadata-filter input {
+  width: 100%;
+  border: none;
+  padding: 6px 15px 6px 10px!important;
+  border-left: 0px;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  margin-left: 0px;
+  height: 42px;
+}
+.metadata-filter input:focus{
+  outline: 0;
+  border: 0;
+  box-shadow: none;
+}
+
+.metadata-filter {
+  padding: 8px 12px;
+}
+.metadata-search-group{
+  display: flex;
+  align-items: center;
+  gap: 0px;
+  border: 1px solid #e2e4e7;
+  border-radius: 4px;
+  padding: 0;
+}
+
+.metadata-filter .icon {
+  color: #ddd;
+  height: 42px;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  padding-left: 10px;
+  border-right: 0px;
+  display: flex;
+  align-items: center;
+}
 
 /*
 Atom One Light by Daniel Gamage

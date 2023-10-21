@@ -1,3 +1,9 @@
+<div class="metadata-filter">
+    <div class="metadata-search-group">
+        <div class="icon"><span class="dashicons dashicons-search"></span></div>
+        <input type="text" class="regular-text" id="meta_key_filter" placeholder="Search by meta key or value...">
+    </div>  
+</div>
 <table class="fixed table-view-list metadata-viewer-table">
     <thead>
         <tr>
