@@ -83,10 +83,7 @@ final class MetadataViewer {
      * Nothing being called here yet.
      */
     public function activate() {
-        // Rewrite rules during metadata_viewer activation
-        if ( $this->has_woocommerce() ) {
-            $this->flush_rewrite_rules();
-        }
+        // On activation
     }
 
     /**
@@ -192,27 +189,5 @@ final class MetadataViewer {
      */
     public function after_plugins_loaded() {
         // Initiate background processes and other tasks
-    }
-
-    /**
-     * Check whether woocommerce is installed and active
-     *
-     * @since 2.9.16
-     *
-     * @return bool
-     */
-    public function has_woocommerce() {
-        return class_exists( 'WooCommerce' );
-    }
-
-    /**
-     * Check whether woocommerce is installed
-     *
-     * @since 3.2.8
-     *
-     * @return bool
-     */
-    public function is_woocommerce_installed() {
-        return in_array( 'woocommerce/woocommerce.php', array_keys( get_plugins() ), true );
     }
 }
