@@ -1,5 +1,5 @@
 === Metadata Viewer ===
-Contributors: aminurislam01
+Contributors: pluginizelab, aminurislam01
 Tags: metadata, post meta, user meta, cpt meta, meta
 Requires at least: 6.0.0
 Tested up to: 6.4.3
