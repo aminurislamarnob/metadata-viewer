@@ -1,6 +1,6 @@
 === Metadata Viewer ===
 Contributors: pluginizelab, aminurislam01
-Tags: metadata, post meta, user meta, cpt meta, meta
+Tags: metadata, post meta, user meta, custom post type meta, meta viewer
 Requires at least: 6.0.0
 Tested up to: 6.4.3
 Requires PHP: 7.4
