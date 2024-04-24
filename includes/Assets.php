@@ -2,6 +2,11 @@
 
 namespace WeLabs\MetadataViewer;
 
+// don't call the file directly
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+
 class Assets {
     /**
      * The constructor.
@@ -33,7 +38,7 @@ class Assets {
      */
     public function register_scripts() {
         wp_register_script( 'metadata_viewer_admin_script', METADATA_VIEWER_PLUGIN_ASSET . '/admin/js/script.js', [ 'jquery' ], METADATA_VIEWER_PLUGIN_VERSION, true );
-        wp_register_script( 'metadata_viewer_highlight_script', METADATA_VIEWER_PLUGIN_ASSET . '/admin/js/highlight.min.js', [], METADATA_VIEWER_PLUGIN_VERSION, true );
+        wp_register_script( 'metadata_viewer_highlight_script', METADATA_VIEWER_PLUGIN_ASSET . '/admin/js/highlight.js', [], METADATA_VIEWER_PLUGIN_VERSION, true );
     }
 
     /**

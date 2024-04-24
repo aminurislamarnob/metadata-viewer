@@ -1,3 +1,14 @@
+<?php
+/**
+ * The template for displaying metadata on posts, pages, and custom post types, user admin pages
+ */
+
+// don't call the file directly
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+?>
+
 <div class="metadata-viewer-wrapper">
     <div class="metadata-filter">
         <div class="metadata-search-group">

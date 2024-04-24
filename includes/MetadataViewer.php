@@ -2,6 +2,11 @@
 
 namespace WeLabs\MetadataViewer;
 
+// don't call the file directly
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+
 /**
  * MetadataViewer class
  *
