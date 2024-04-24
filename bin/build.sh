@@ -43,7 +43,7 @@ status "Generating build... 👷‍♀️"
 
 # Copy all files
 status "Copying files... ✌️"
-FILES=(metadata-viewer.php readme.txt dist includes templates assets languages composer.json composer.lock)
+FILES=(metadata-viewer.php readme.txt dist includes templates assets languages composer.json composer.lock index.php)
 
 for file in ${FILES[@]}; do
     if [ -f "$file" ] || [ -d "$file" ]; then
