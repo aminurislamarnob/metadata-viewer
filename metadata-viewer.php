@@ -3,7 +3,7 @@
  * Plugin Name: Metadata Viewer
  * Plugin URI:  https://wordpress.org/plugins/metadata-viewer
  * Description: Show post, user metadata in a metabox when editing posts / pages / user / custom post type - a great dev tool for debugging issues with post or user metadata.
- * Version: 0.0.1
+ * Version: 1.0.0
  * Author: pluginizelab
  * Author URI: https://wordpress.org/plugins/metadata-viewer
  * Text Domain: metadata-viewer
