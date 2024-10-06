@@ -12,13 +12,22 @@ A plugin or theme developer can view metadata by this plugin easily.
 
 == Description ==
 
-The Metadata Viewer plugin displays post, user (ie. posts, pages, and custom post types, user) meta keys and their values at the bottom of the post & user editing page. There is also integrated realtime search feature.
+The Metadata Viewer plugin displays post, user (ie. posts, pages, and custom post types, user, WooCommerce products & orders) meta keys and their values at the bottom of the post & user editing page. There is also integrated realtime search feature.
 Just install a single plugin to solve multiple purpose like to show posts, pages, custom post types & user meta.
 
-= Up-Comming Feature =
+
+= Features =
+* Posts Metadata Viewer
+* Custom Post Types Metadata Viewer
+* Pages Metadata Viewer
+* Users Metadata Viewer
+* WooCommerce Products Metadata Viewer
+* WooCommerce Orders Metadata Viewer
+
+
+= Up-Comming Features =
 * Comment Metadata Viewer
 * Term Metadata Viewer
-* WooCommerce Order Metadata Viewer
 
 == Installation ==
 
