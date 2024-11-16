@@ -2,7 +2,7 @@
 Contributors: pluginizelab, aminurislam01
 Tags: metadata, post meta, user meta, custom post type meta, meta viewer
 Requires at least: 6.0.0
-Stable tag: 2.0.0
+Stable tag: 2.1.0
 Tested up to: 6.6
 Requires PHP: 7.4
 License: GPLv2 or later
