@@ -1,9 +1,10 @@
 === Metadata Viewer ===
 Contributors: pluginizelab, aminurislam01
+Donate link: https://www.buymeacoffee.com/aiarnob
 Tags: metadata, post meta, user meta, custom post type meta, meta viewer
 Requires at least: 6.0.0
-Stable tag: 2.1.0
-Tested up to: 6.6
+Stable tag: 2.1.1
+Tested up to: 6.9
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -28,6 +29,9 @@ Just install a single plugin to solve multiple purpose like to show posts, pages
 = Up-Comming Features =
 * Comment Metadata Viewer
 * Term Metadata Viewer
+
+== Support ==
+If you find this plugin useful, consider supporting its development through a [donation](https://www.buymeacoffee.com/aiarnob).
 
 == Installation ==
 
