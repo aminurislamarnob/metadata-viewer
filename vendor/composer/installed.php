@@ -3,7 +3,7 @@
         'name' => 'welabs/metadata-viewer',
         'pretty_version' => 'dev-develop',
         'version' => 'dev-develop',
-        'reference' => '5eedff54cb40085f8ace9afa1d71b4cb98baa3d2',
+        'reference' => 'a7022b2c2f3e9d29c12ee6b891be59c7fc698391',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         'welabs/metadata-viewer' => array(
             'pretty_version' => 'dev-develop',
             'version' => 'dev-develop',
-            'reference' => '5eedff54cb40085f8ace9afa1d71b4cb98baa3d2',
+            'reference' => 'a7022b2c2f3e9d29c12ee6b891be59c7fc698391',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
