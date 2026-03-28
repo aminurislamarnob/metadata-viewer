@@ -47,12 +47,12 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # TODO: Uncomment when ready to deploy to WordPress.org
-    #   - name: WordPress Plugin Deploy
-    #     id: deploy
-    #     uses: 10up/action-wordpress-plugin-deploy@stable
-    #     with:
-    #       generate-zip: true
-    #     env:
-    #       SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
-    #       SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
-    #       SLUG: metadata-viewer
+      - name: WordPress Plugin Deploy
+        id: deploy
+        uses: 10up/action-wordpress-plugin-deploy@stable
+        with:
+          generate-zip: true
+        env:
+          SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
+          SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
+          SLUG: metadata-viewer
