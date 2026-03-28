@@ -23,10 +23,11 @@ class PostMetaData {
 	/**
 	 * Add meta box on wp admin post edit screen
 	 *
-	 * @param string $post_type
-	 * @param object $post
+	 * @param string   $post_type Post type string.
+	 * @param \WP_Post $post      Post object (required by `add_meta_boxes` signature; unused here).
 	 * @return void
 	 */
+	// phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.FoundAfterLastUsed -- WordPress passes $post; only $post_type is needed for add_meta_box screen.
 	public function adding_metadata_viewer_meta_box( $post_type, $post ) {
 		add_meta_box(
 			'post-metadata-viewer',
@@ -41,7 +42,7 @@ class PostMetaData {
 	/**
 	 * Generate metadata viewer table
 	 *
-	 * @param object $post_object
+	 * @param \WP_Post $post_object
 	 * @return void
 	 */
 	public function render_show_post_metadata( $post_object ) {
@@ -49,7 +50,8 @@ class PostMetaData {
 			return;
 		}
 
-		$post_meta = get_metadata( 'post', $post_object->ID );
+		$post_meta = get_metadata( 'post', (int) $post_object->ID );
+		
 		return Helpers::get_metadata_table_view( $post_meta );
 	}
 }

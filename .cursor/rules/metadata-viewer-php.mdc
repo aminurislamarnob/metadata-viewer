@@ -26,3 +26,9 @@ alwaysApply: false
 - Run from plugin root: `composer phpcs` / `composer phpcbf` (`phpcs.xml`: WordPress + WordPress-Extra, PHP 7.4–, minimum WP 5.4, text domain `metadata-viewer`).
 - Prefer strict comparisons where PHPCS enforces them (`StrictComparisons`, `in_array` strict).
 - Match the indentation style of the file you edit (the codebase mixes tab- and space-indented files; do not reformat unrelated lines).
+
+## WooCommerce
+
+- Header declares WooCommerce compatibility; `MetadataViewer` listens to `woocommerce_flush_rewrite_rules` where relevant — preserve that integration when changing lifecycle hooks.
+- **Post meta viewer** uses `get_metadata( 'post', $id )` for every post type, including **`product`**. Do not switch to `$product->get_meta_data()` for display: WooCommerce filters out internal keys (SKU, price, stock, etc.) into object props, so `get_meta_data()` is often empty or incomplete compared to the `postmeta` table — bad for a debugging tool.
+- **Order meta viewer** (`OrderMetaData`): if `woocommerce_custom_orders_table_enabled` is **no**, or HPOS is **yes** and `woocommerce_custom_orders_table_data_sync_enabled` is **yes**, use `get_metadata( 'post', $order_id )`. If HPOS is **yes** and sync is **no**, use the order object’s `get_meta_data()` / `get_meta( $key, false )` (postmeta may not mirror COT).
