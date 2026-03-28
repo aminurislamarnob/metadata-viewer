@@ -30,6 +30,20 @@ class Helpers {
     }
 
     /**
+     * Check if current admin screen is comment edit page.
+     *
+     * @return bool
+     */
+    public static function is_comment_edit_screen() {
+        if ( ! function_exists( 'get_current_screen' ) ) {
+            return false;
+        }
+
+        $current_screen = get_current_screen();
+        return isset( $current_screen->id ) && 'comment' === $current_screen->id;
+    }
+
+    /**
      * Recursive function to unserialize metadata array
      *
      * @param array $meta_value

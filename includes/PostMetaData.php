@@ -29,6 +29,11 @@ class PostMetaData {
 	 */
 	// phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.FoundAfterLastUsed -- WordPress passes $post; only $post_type is needed for add_meta_box screen.
 	public function adding_metadata_viewer_meta_box( $post_type, $post ) {
+
+		if ( Helpers::is_comment_edit_screen() ) {
+			return;
+		}
+		
 		add_meta_box(
 			'post-metadata-viewer',
 			__( 'Post Metadata Viewer', 'metadata-viewer' ),
@@ -51,7 +56,7 @@ class PostMetaData {
 		}
 
 		$post_meta = get_metadata( 'post', (int) $post_object->ID );
-		
+
 		return Helpers::get_metadata_table_view( $post_meta );
 	}
 }

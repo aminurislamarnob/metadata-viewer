@@ -19,7 +19,7 @@ final class MetadataViewer {
 	 *
 	 * @var string
 	 */
-	public $version = '2.1.1';
+	public $version = '2.2.1';
 
 	/**
 	 * Instance of self
@@ -180,7 +180,9 @@ final class MetadataViewer {
 		$this->container['scripts']             = new Assets();
 		$this->container['helpers']             = new Helpers();
 		$this->container['post_meta_data']      = new PostMetaData();
+		$this->container['taxonomy_meta_data']  = new TaxonomyMetaData();
 		$this->container['user_meta_data']      = new UserMetaData();
+		$this->container['comment_meta_data']   = new CommentMetaData();
 		$this->container['woo_order_meta_data'] = new OrderMetaData();
 	}
 

@@ -27,7 +27,7 @@
     padding: 10px;
 }
 
-#post-metadata-viewer .inside, #user-metadata-viewer-id .inside {
+#post-metadata-viewer .inside, #user-metadata-viewer-id .inside, #taxonomy-metadata-viewer-id .inside, #comment-metadata-viewer-id .inside {
     padding-left: 0;
     padding-right: 0;
     margin-top: 0;
@@ -40,15 +40,15 @@
 .metadata-viewer-table tr:hover td {
     background: #fafafa;
 }
-#post-metadata-viewer, #user-metadata-viewer-id{
+#post-metadata-viewer, #user-metadata-viewer-id, #taxonomy-metadata-viewer-id, #comment-metadata-viewer-id{
   border: 0px;
   box-shadow: none;
 }
 
-#post-metadata-viewer .postbox-header, #user-metadata-viewer-id .postbox-header {
+#post-metadata-viewer .postbox-header, #user-metadata-viewer-id .postbox-header, #taxonomy-metadata-viewer-id .postbox-header, #comment-metadata-viewer-id .postbox-header {
   border-bottom-color: #e2e4e7;
 }
-#post-metadata-viewer h2, #user-metadata-viewer-id h2 {
+#post-metadata-viewer h2, #user-metadata-viewer-id h2, #taxonomy-metadata-viewer-id h2, #comment-metadata-viewer-id h2 {
   font-size: 14px;
   padding: 8px 12px;
   margin: 0;
