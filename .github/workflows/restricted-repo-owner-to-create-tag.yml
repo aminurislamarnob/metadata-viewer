@@ -1,0 +1,29 @@
+name: Restrict Tag Creation to Owners
+
+on:
+  push:
+    tags:
+      - '*'   # This triggers the workflow when any tag is pushed
+
+jobs:
+  restrict-tags:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check Permissions via GitHub API
+        run: |
+          # Get the username of the person who triggered the push
+          actor=$(echo $GITHUB_ACTOR)
+          
+          # Call GitHub API to check the user's role (Owner/Admin)
+          permission=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            https://api.github.com/repos/${{ github.repository }}/collaborators/$actor/permission \
+            | jq -r '.permission')
+
+          # Check if the user has admin or owner permissions
+          if [[ "$permission" != "admin" && "$permission" != "write" ]]; then
+            echo "Error: Only repository owners and admins can create tags."
+            exit 1
+          else
+            echo "User $actor has permission to create tags."
+          fi
