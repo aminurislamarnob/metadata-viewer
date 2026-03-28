@@ -1,0 +1,28 @@
+---
+description: Metadata Viewer plugin — PHP, WordPress hooks, and templates
+globs: **/*.php
+alwaysApply: false
+---
+
+# Metadata Viewer — PHP
+
+## Project shape
+
+- Bootstrap: `metadata-viewer.php` guards with `ABSPATH`, defines `METADATA_VIEWER_FILE`, loads Composer autoload, exposes `welabs_metadata_viewer()` returning `MetadataViewer::init()`.
+- Namespace: `WeLabs\MetadataViewer\` (PSR-4: `includes/` per `composer.json`).
+- Core class: `MetadataViewer` — `final`, singleton via `init()`, lightweight container accessed with magic `__get`.
+- PHP templates live in `templates/`; include via `Helpers` / constants such as `METADATA_VIEWER_TEMPLATE_DIR` — never load templates without the `ABSPATH` guard at the top of each file.
+
+## WordPress conventions
+
+- Extend behavior with actions/filters; do not edit WordPress or WooCommerce core.
+- **i18n**: text domain `metadata-viewer` — use `__()`, `_e()`, `esc_html__()`, etc., matching existing template strings.
+- **Output**: escape for context (`esc_html`, `esc_attr`, `esc_url`, `wp_kses_post` as appropriate). The plugin is admin/debug-oriented; keep escaping consistent with `templates/*.php`.
+- **Input**: sanitize and validate; use nonces for any new forms or AJAX.
+- Script/style handles use the `metadata_viewer_*` prefix pattern (see `Assets.php`).
+
+## Code style & tooling
+
+- Run from plugin root: `composer phpcs` / `composer phpcbf` (`phpcs.xml`: WordPress + WordPress-Extra, PHP 7.4–, minimum WP 5.4, text domain `metadata-viewer`).
+- Prefer strict comparisons where PHPCS enforces them (`StrictComparisons`, `in_array` strict).
+- Match the indentation style of the file you edit (the codebase mixes tab- and space-indented files; do not reformat unrelated lines).

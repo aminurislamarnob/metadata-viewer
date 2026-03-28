@@ -1,0 +1,12 @@
+---
+description: Metadata Viewer — admin JavaScript and CSS
+globs: assets/**/*
+alwaysApply: false
+---
+
+# Metadata Viewer — Admin assets
+
+- Scripts are registered in `includes/Assets.php` with handles like `metadata_viewer_admin_script` and `metadata_viewer_highlight_script`; enqueue dependencies (`jquery` where needed) and use `METADATA_VIEWER_PLUGIN_VERSION` for cache busting.
+- Keep admin JS compatible with jQuery usage already on edit screens; avoid breaking the metadata filter/search UI wired in `assets/admin/js/script.js`.
+- CSS lives under `assets/admin/css/`; align class names with templates in `templates/` (e.g. `.metadata-viewer-wrapper`, `.metadata-viewer-table`).
+- `phpcs.xml` excludes `assets/` from PHP scanning — still follow sensible front-end hygiene (no inline secrets, minimal global pollution).

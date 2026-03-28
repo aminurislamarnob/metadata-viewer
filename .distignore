@@ -43,3 +43,4 @@ webpack-entries.js
 base-tailwind.config.js
 CLAUDE.md
 /.claude
+/.cursor

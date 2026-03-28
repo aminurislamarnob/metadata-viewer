@@ -33,3 +33,4 @@ composer.json
 docs
 CHANGELOG.md
 DEVELOPER.md
+.cursor
