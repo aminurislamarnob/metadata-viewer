@@ -3,7 +3,7 @@ Contributors: pluginizelab, aminurislam01
 Donate link: https://www.buymeacoffee.com/aiarnob
 Tags: metadata, post meta, user meta, custom post type meta, meta viewer
 Requires at least: 6.0.0
-Stable tag: 2.2.1
+Stable tag: 2.2.2
 Tested up to: 6.9
 Requires PHP: 7.4
 License: GPLv2 or later
@@ -41,6 +41,11 @@ Installing this plugin is very easy just like any other WordPress plugin. Please
 3. Activate the plugin from plugins page.
 
 == Changelog ==
+
+= 2.2.2 =
+* Added order and product metadata viewers on the Dokan vendor dashboard ("Order Details" and "Edit Product" pages).
+* Introduced a template loader so viewer markup lives in `templates/` and is overridable via the `metadata_viewer_template` filter.
+* Made the metadata table search icon filterable.
 
 = 2.2.1 =
 * Added taxonomy term metadata viewer on taxonomy edit screens.
