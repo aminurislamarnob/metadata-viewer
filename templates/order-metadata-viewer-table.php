@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 <div class="metadata-viewer-wrapper">
 	<div class="metadata-filter">
 		<div class="metadata-search-group">
-			<div class="icon"><span class="dashicons dashicons-search"></span></div>
+			<div class="icon"><?php echo wp_kses_post( apply_filters( 'metadata_viewer_order_search_icon_html', '<span class="dashicons dashicons-search"></span>' ) ); ?></div>
 			<input type="text" class="regular-text" id="meta_key_filter" placeholder="Search by meta key or value...">
 		</div>  
 	</div>

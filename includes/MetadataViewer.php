@@ -184,6 +184,10 @@ final class MetadataViewer {
 		$this->container['user_meta_data']      = new UserMetaData();
 		$this->container['comment_meta_data']   = new CommentMetaData();
 		$this->container['woo_order_meta_data'] = new OrderMetaData();
+
+		if ( function_exists( 'dokan' ) ) {
+			$this->container['dokan_order_meta_data'] = new DokanOrderMetaData();
+		}
 	}
 
 	/**
