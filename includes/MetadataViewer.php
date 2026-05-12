@@ -114,29 +114,15 @@ final class MetadataViewer {
 	 * @return void
 	 */
 	public function define_constants() {
-		$this->define( 'METADATA_VIEWER_PLUGIN_VERSION', $this->version );
-		$this->define( 'METADATA_VIEWER_DIR', dirname( METADATA_VIEWER_FILE ) );
-		$this->define( 'METADATA_VIEWER_INC_DIR', METADATA_VIEWER_DIR . '/includes' );
-		$this->define( 'METADATA_VIEWER_TEMPLATE_DIR', METADATA_VIEWER_DIR . '/templates' );
-		$this->define( 'METADATA_VIEWER_PLUGIN_ASSET', plugins_url( 'assets', METADATA_VIEWER_FILE ) );
+		defined( 'METADATA_VIEWER_PLUGIN_VERSION' ) || define( 'METADATA_VIEWER_PLUGIN_VERSION', $this->version );
+		defined( 'METADATA_VIEWER_DIR' ) || define( 'METADATA_VIEWER_DIR', dirname( METADATA_VIEWER_FILE ) );
+		defined( 'METADATA_VIEWER_INC_DIR' ) || define( 'METADATA_VIEWER_INC_DIR', METADATA_VIEWER_DIR . '/includes' );
+		defined( 'METADATA_VIEWER_TEMPLATE_DIR' ) || define( 'METADATA_VIEWER_TEMPLATE_DIR', METADATA_VIEWER_DIR . '/templates' );
+		defined( 'METADATA_VIEWER_PLUGIN_ASSET' ) || define( 'METADATA_VIEWER_PLUGIN_ASSET', plugins_url( 'assets', METADATA_VIEWER_FILE ) );
 
 		// give a way to turn off loading styles and scripts from parent theme
-		$this->define( 'METADATA_VIEWER_LOAD_STYLE', true );
-		$this->define( 'METADATA_VIEWER_LOAD_SCRIPTS', true );
-	}
-
-	/**
-	 * Define constant if not already defined
-	 *
-	 * @param string      $name
-	 * @param string|bool $value
-	 *
-	 * @return void
-	 */
-	private function define( $name, $value ) {
-		if ( ! defined( $name ) ) {
-			define( $name, $value );
-		}
+		defined( 'METADATA_VIEWER_LOAD_STYLE' ) || define( 'METADATA_VIEWER_LOAD_STYLE', true );
+		defined( 'METADATA_VIEWER_LOAD_SCRIPTS' ) || define( 'METADATA_VIEWER_LOAD_SCRIPTS', true );
 	}
 
 	/**
@@ -186,7 +172,7 @@ final class MetadataViewer {
 		$this->container['woo_order_meta_data'] = new OrderMetaData();
 
 		if ( function_exists( 'dokan' ) ) {
-			$this->container['dokan_order_meta_data'] = new DokanOrderMetaData();
+			$this->container['dokan_meta_data'] = new DokanMetaData();
 		}
 	}
 
@@ -201,5 +187,46 @@ final class MetadataViewer {
 	 */
 	public function after_plugins_loaded() {
 		// Initiate background processes and other tasks
+	}
+
+	/**
+	 * Get the template file path to require or include.
+	 *
+	 * @param string $name
+	 * @return string
+	 */
+	public function get_template_path( $name ) {
+		$template = untrailingslashit( METADATA_VIEWER_TEMPLATE_DIR ) . '/' . untrailingslashit( $name );
+
+		return apply_filters( 'metadata_viewer_template', $template, $name );
+	}
+
+	/**
+	 * Get templates passing attributes and including the file.
+	 *
+	 * @param mixed $template_name
+	 * @param array $args          (default: array())
+	 *
+	 * @return void
+	 */
+	public function get_template( $template_name, $args = array() ) {
+		if ( $args && is_array( $args ) ) {
+            extract( $args ); // phpcs:ignore
+		}
+
+		$template_path = $this->get_template_path( $template_name );
+
+		if ( ! file_exists( $template_path ) ) {
+			_doing_it_wrong( __FUNCTION__, sprintf( '<code>%s</code> does not exist.', esc_html( $template_path ) ), esc_html( METADATA_VIEWER_PLUGIN_VERSION ) );
+
+			return;
+		}
+
+		do_action( 'metadata_viewer_before_template_part', $template_name, $args );
+
+		// Template path is validated above via file_exists; safe to include.
+		include $template_path; // phpcs:ignore WordPressVIPMinimum.Files.IncludingFile.UsingVariable
+
+		do_action( 'metadata_viewer_after_template_part', $template_name, $args );
 	}
 }

@@ -19,16 +19,17 @@ A WordPress plugin ("Metadata Viewer") that surfaces metadata (custom fields) fo
 
 - **Bootstrap** (`metadata-viewer.php`): guards on `ABSPATH`, defines `METADATA_VIEWER_FILE`, loads Composer autoload, calls `welabs_metadata_viewer()` → `MetadataViewer::init()`.
 - **Namespace**: `WeLabs\MetadataViewer\`, PSR-4 mapped to `includes/` (`composer.json`).
-- **`MetadataViewer`** (`includes/MetadataViewer.php`): `final` singleton, lightweight service container. Subclasses are instantiated in `init_classes()` (hooked on `init`, priority 4) and accessed via magic `__get` on the container (e.g. `welabs_metadata_viewer()->post_meta_data`). `define_constants()` sets `METADATA_VIEWER_DIR`, `_INC_DIR`, `_TEMPLATE_DIR`, `_PLUGIN_ASSET`, `_PLUGIN_VERSION`, and the `METADATA_VIEWER_LOAD_STYLE` / `_LOAD_SCRIPTS` toggles.
-- **Per-object-type viewers** in `includes/`, each hooks the appropriate admin screen and renders a metadata table:
-  - `PostMetaData` — post edit screens (all post types, including `product`).
+- **`MetadataViewer`** (`includes/MetadataViewer.php`): `final` singleton + service container. Subclasses are instantiated in `init_classes()` (hooked on `init`, priority 4) and reached via magic `__get` (e.g. `welabs_metadata_viewer()->post_meta_data`). `define_constants()` sets `METADATA_VIEWER_DIR`/`_INC_DIR`/`_TEMPLATE_DIR`/`_PLUGIN_ASSET`/`_PLUGIN_VERSION` and the `_LOAD_STYLE`/`_LOAD_SCRIPTS` toggles. `get_template_path()` / `get_template( $name, $args )` resolve + include a file under `METADATA_VIEWER_TEMPLATE_DIR` (`get_template` extracts `$args`, fires `metadata_viewer_before/after_template_part`).
+- **Per-object-type viewers** in `includes/`, each hooks the relevant edit screen and renders a metadata table:
+  - `PostMetaData` — post edit screens (all post types, incl. `product`).
   - `UserMetaData` — user profile/edit screens.
-  - `CommentMetaData` — `comment.php?action=editcomment` via `add_meta_boxes_comment`; meta from `get_metadata( 'comment', ... )`.
-  - `TaxonomyMetaData` — `{$taxonomy}_edit_form_fields`; meta from `get_metadata( 'term', ... )`.
+  - `CommentMetaData` — `comment.php?action=editcomment`; `get_metadata( 'comment', ... )`.
+  - `TaxonomyMetaData` — `{$taxonomy}_edit_form`; `get_metadata( 'term', ... )`.
   - `OrderMetaData` — WooCommerce order edit screen; HPOS-aware (see below).
-- **`Helpers`** — shared static utilities: `get_metadata_table_view()` includes the table template, `is_comment_edit_screen()`, `unserialize_metadata_recursive()`.
-- **`Assets`** (`includes/Assets.php`) — registers/enqueues admin JS & CSS. Handles use the `metadata_viewer_*` prefix (e.g. `metadata_viewer_admin_script`, `metadata_viewer_highlight_script`); version-busted with `METADATA_VIEWER_PLUGIN_VERSION`.
-- **Templates** (`templates/`): `metadata-viewer-table.php` (generic table), `order-metadata-viewer-table.php`. Every template starts with the `ABSPATH` guard; include them through `Helpers` / the `METADATA_VIEWER_TEMPLATE_DIR` constant, never directly.
+  - `DokanMetaData` — Dokan vendor dashboard order (`dokan_order_content_inside_after`) and product (`dokan_product_content_inside_area_after`) pages; only when `function_exists( 'dokan' )`. Delegates order rendering to `OrderMetaData` (via `woo_order_meta_data`); products use `get_metadata( 'post', $id )`.
+- **`Helpers`** — static utils: `get_metadata_table_view()` (includes the table template), `is_comment_edit_screen()`, `unserialize_metadata_recursive()`.
+- **`Assets`** (`includes/Assets.php`) — registers/enqueues admin JS & CSS; handles use the `metadata_viewer_*` prefix, version-busted with `METADATA_VIEWER_PLUGIN_VERSION`.
+- **Templates** (`templates/`): `metadata-viewer-table.php` (generic table; search icon filterable via `metadata_viewer_search_icon_html`), `order-metadata-viewer-table.php` (uses `metadata_viewer_order_search_icon_html`), `taxonomy-metadata-viewer.php`, `dokan-order-metadata-viewer-panel.php`, `dokan-product-metadata-viewer-panel.php`. The wrapper templates are loaded via `get_template()` and fire a `metadata_viewer_*_body` action that the owning class hooks to print the table (keeps markup in templates, logic in classes). Every template starts with the `ABSPATH` guard; include them via `get_template()` / `Helpers`, never directly.
 - **Front-end** (`assets/admin/`): `js/script.js` wires the realtime filter/search; CSS class names (`.metadata-viewer-wrapper`, `.metadata-viewer-table`, etc.) must stay in sync with the PHP templates. `assets/` is excluded from PHPCS.
 
 ## Conventions & gotchas

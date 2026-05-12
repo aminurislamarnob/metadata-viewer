@@ -18,6 +18,9 @@ class TaxonomyMetaData {
 	 */
 	public function __construct() {
 		add_action( 'admin_init', array( $this, 'register_taxonomy_edit_hooks' ) );
+
+		// Render the metadata table inside the postbox body of the template.
+		add_action( 'metadata_viewer_taxonomy_metadata_body', array( $this, 'render_metadata_table' ) );
 	}
 
 	/**
@@ -49,15 +52,25 @@ class TaxonomyMetaData {
 		}
 
 		$term_meta = get_metadata( 'term', (int) $term->term_id );
-		?>
-		<div id="post-metadata-viewer" class="postbox">
-			<div class="postbox-header">
-				<h2 class="hndle"><?php echo esc_html__( 'Taxonomy Metadata Viewer', 'metadata-viewer' ); ?></h2>
-			</div>
-			<div class="inside">
-				<?php Helpers::get_metadata_table_view( $term_meta ); ?>
-			</div>
-		</div>
-		<?php
+
+		welabs_metadata_viewer()->get_template(
+			'taxonomy-metadata-viewer.php',
+			array(
+				'term_meta' => $term_meta,
+			)
+		);
+	}
+
+	/**
+	 * Render the metadata table inside the taxonomy viewer postbox body.
+	 *
+	 * Hooked on `metadata_viewer_taxonomy_metadata_body` from the template.
+	 *
+	 * @param array $term_meta The term meta array.
+	 *
+	 * @return void
+	 */
+	public function render_metadata_table( $term_meta ) {
+		Helpers::get_metadata_table_view( $term_meta );
 	}
 }
