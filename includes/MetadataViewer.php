@@ -19,7 +19,7 @@ final class MetadataViewer {
 	 *
 	 * @var string
 	 */
-	public $version = '2.2.3';
+	public $version = '2.2.4';
 
 	/**
 	 * Instance of self

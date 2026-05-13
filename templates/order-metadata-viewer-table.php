@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<input type="text" class="regular-text" id="meta_key_filter" placeholder="Search by meta key or value...">
 		</div>  
 	</div>
-	<table class="fixed table-view-list metadata-viewer-table">
+	<table class="tbl-fixed table-view-list metadata-viewer-table">
 		<thead>
 			<tr>
 				<th><?php echo esc_html__( 'Meta Key', 'metadata-viewer' ); ?></th>

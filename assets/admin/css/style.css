@@ -13,6 +13,10 @@
     width: 100%;
 }
 
+.metadata-viewer-table.tbl-fixed {
+    table-layout: fixed;
+}
+
 .metadata-viewer-table pre {
     margin: 0;
 }

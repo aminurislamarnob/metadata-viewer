@@ -3,7 +3,7 @@ Contributors: pluginizelab, aminurislam01
 Donate link: https://www.buymeacoffee.com/aiarnob
 Tags: metadata, post meta, user meta, custom post type meta, meta viewer
 Requires at least: 6.0.0
-Stable tag: 2.2.3
+Stable tag: 2.2.4
 Tested up to: 6.9
 Requires PHP: 7.4
 License: GPLv2 or later
@@ -42,6 +42,9 @@ Installing this plugin is very easy just like any other WordPress plugin. Please
 3. Activate the plugin from plugins page.
 
 == Changelog ==
+
+= 2.2.4 =
+* Applied `table-layout: fixed` to the metadata table via a dedicated `tbl-fixed` class to prevent column-width clashes with host themes/plugins.
 
 = 2.2.3 =
 * Refreshed the readme feature list and documentation.
